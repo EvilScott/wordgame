@@ -114,6 +114,24 @@
   height: 1em;
 }
 
+span.letter {
+  font-size: 3rem;
+  padding: 0 1rem;
+}
+
+span.letter:first-child {
+  color: #0070f3;
+}
+
+input.guesses {
+  font-size: 2rem;
+  border-radius: 0.3rem;
+}
+
+span.result {
+  font-size: 1.5rem;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
