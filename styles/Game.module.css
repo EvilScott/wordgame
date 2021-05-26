@@ -1,0 +1,22 @@
+form.game div {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+form.game span.letter {
+    font-size: 3rem;
+    padding: 0 1rem;
+}
+
+form.game span.letter:first-child {
+    color: #0070f3;
+}
+
+form.game input.guesses {
+    font-size: 2rem;
+    border-radius: 0.3rem;
+}
+
+form.game span.result {
+    font-size: 1.5rem;
+}

@@ -1,15 +1,9 @@
 import Head from 'next/head';
 import styles from 'styles/Home.module.css';
+import Game from 'components/Game';
+import { getLetters } from 'lib/api';
 
-function handleKeyPress(e) {
-  if (e.keyCode === 13) {
-    e.preventDefault();
-    const guess = e.target.value;
-  }
-}
-
-export default function Home(props) {
-  const { letters } = props;
+export default function Home({ keyLetter, letters }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -25,17 +19,7 @@ export default function Home(props) {
           every word <i>must</i> use the blue letter.
         </p>
 
-        <p>
-          { letters.map((letter, idx) => <span id={`l-${idx}`} className={styles.letter}>{letter}</span>) }
-        </p>
-
-        <p>
-          <input className={styles.guesses} type={'text'} tabIndex={0} onKeyDown={handleKeyPress} />
-        </p>
-
-        <p>
-          <span id={'result'} className={styles.result}>Enter a guess!</span>
-        </p>
+        <Game keyLetter={keyLetter} letters={letters} />
       </main>
 
       <footer className={styles.footer}>
@@ -46,9 +30,8 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('http://localhost:3000/api/letters');
-  const { letters } = await res.json();
+  const [ keyLetter, ...letters ] = await getLetters();
   return {
-    props: { letters },
-  };
+    props: { keyLetter, letters }
+  }
 }
