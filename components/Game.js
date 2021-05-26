@@ -1,16 +1,19 @@
 import styles from 'styles/Game.module.css';
+import Score from 'components/Score';
 import { scoreGuess } from 'lib/api';
+import { useState } from 'react';
 
 export default function Game({ keyLetter, letters }) {
-  async function handleKeyPress(e) {
+  const [ totalScore, setScore ] = useState(0);
+  const handleKeyPress = async (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
       const guess = e.target.value;
       e.target.value = '';
       const score = await scoreGuess(keyLetter, letters, guess);
-      console.log(score)
+      setScore(totalScore + score);
     }
-  }
+  };
 
   return (
     <form className={styles.game}>
@@ -24,7 +27,7 @@ export default function Game({ keyLetter, letters }) {
       </div>
 
       <div>
-        <span id={'result'} className={styles.result}>Enter a guess!</span>
+        <Score score={totalScore} />
       </div>
     </form>
   )
