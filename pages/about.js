@@ -1,11 +1,11 @@
-import styles from 'styles/Home.module.css';
 import Layout from 'components/Layout';
+import Link from 'next/link';
 
 export default function About() {
   return (
     <Layout title={'WordGame | About'}>
-        <h3 className={styles.title}>About WordGame</h3>
-        <p className={styles.description}>
+        <h1>About WordGame</h1>
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna
           aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -14,6 +14,9 @@ export default function About() {
           esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
           occaecat cupidatat non proident, sunt in culpa qui officia
           deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          <Link href={'/'} shallow={true}><a>Back to game</a></Link>
         </p>
     </Layout>
   );
