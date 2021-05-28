@@ -1,8 +1,9 @@
-import styles from 'styles/Game.module.css';
 import Answers from 'components/Answers';
+import Guess from 'components/Guess';
+import Letters from 'components/Letters';
 import Message from 'components/Message';
 import Score from 'components/Score';
-import { scoreGuess } from 'lib/api';
+import { getLetters, scoreGuess } from 'lib/api';
 import { useState } from 'react';
 
 export default function Game({ keyLetter, letters, possibleScore }) {
@@ -10,36 +11,21 @@ export default function Game({ keyLetter, letters, possibleScore }) {
   const [ currentMessage, setMessage ] = useState(' ');
   const [ answers, setAnswers ] = useState([]);
 
-  const handleKeyPress = async (e) => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      const guess = e.target.value;
-      e.target.value = '';
-      if (answers.includes(guess)) { return setMessage('Already found') }
-      const { score, message } = await scoreGuess(keyLetter, letters, guess);
-      if (score > 0) { setAnswers(answers.concat(guess)) }
-      setScore(totalScore + score);
-      setMessage(' ');
-      setMessage(message);
-    }
+  const submitGuess = async (guess) => {
+    const { score, message } = await scoreGuess(keyLetter, letters, answers, guess);
+    if (score > 0) { setAnswers(answers.concat(guess)) }
+    setScore(totalScore + score);
+    setMessage(' '); // ensures a re-render for animation
+    setMessage(message);
   };
 
   return (
-    <form className={styles.game}>
-      <div>
-        <span className={`${styles.letter} blue`}>{keyLetter}</span>
-        { letters.map((letter, idx) => <span key={`l-${idx}`} className={styles.letter}>{letter}</span>) }
-      </div>
-
-      <div>
-        <input className={styles.guesses} type={'text'} tabIndex={0} onKeyDown={handleKeyPress} />
-      </div>
-
-      <div>
-        <Score score={totalScore} possibleScore={possibleScore} />
-        <Message message={currentMessage} />
-        <Answers answers={answers} />
-      </div>
+    <form>
+      <Letters keyLetter={keyLetter} letters={letters ?? []} />
+      <Guess submitGuess={submitGuess} />
+      <Score score={totalScore} possibleScore={possibleScore} />
+      <Message message={currentMessage} />
+      <Answers answers={answers} />
     </form>
   );
 }

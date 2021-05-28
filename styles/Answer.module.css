@@ -1,5 +1,6 @@
 div.answers  {
-    height: 3rem;
+    min-height: 3rem;
     margin-top: 2rem;
     font-size: 1.25rem;
+    width: 30rem;
 }
