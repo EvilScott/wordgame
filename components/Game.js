@@ -5,12 +5,10 @@ import Score from 'components/Score';
 import { scoreGuess } from 'lib/api';
 import { useState } from 'react';
 
-export default function Game({ keyLetter, letters }) {
+export default function Game({ keyLetter, letters, possibleScore }) {
   const [ totalScore, setScore ] = useState(0);
   const [ currentMessage, setMessage ] = useState(' ');
   const [ answers, setAnswers ] = useState([]);
-
-  const possibleScore = 100; //TODO fix this
 
   const handleKeyPress = async (e) => {
     if (e.keyCode === 13) {

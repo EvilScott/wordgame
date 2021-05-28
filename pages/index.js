@@ -3,7 +3,7 @@ import styles from 'styles/Home.module.css';
 import Game from 'components/Game';
 import { getLetters } from 'lib/api';
 
-export default function Home({ keyLetter, letters }) {
+export default function Home({ keyLetter, letters, possibleScore }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,7 +20,7 @@ export default function Home({ keyLetter, letters }) {
           and be at least 4 letters long.
         </p>
 
-        <Game keyLetter={keyLetter} letters={letters} />
+        <Game keyLetter={keyLetter} letters={letters} possibleScore={possibleScore} />
       </main>
 
       <footer className={styles.footer}>
@@ -31,8 +31,8 @@ export default function Home({ keyLetter, letters }) {
 }
 
 export async function getServerSideProps() {
-  const [ keyLetter, ...letters ] = await getLetters();
+  const { keyLetter, letters, possibleScore } = await getLetters();
   return {
-    props: { keyLetter, letters }
+    props: { keyLetter, letters, possibleScore }
   }
 }
