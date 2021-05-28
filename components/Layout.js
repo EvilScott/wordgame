@@ -12,7 +12,7 @@ export default function Layout({ children, title }) {
         {children}
       </main>
       <footer className={styles.footer}>
-        <Link href={'/about'} shallow={true}><a>About</a></Link>
+        <Link href={'/about'}><a>About</a></Link>
         <span className={styles.separator}>//</span>
         <a href={'https://github.com/EvilScott/wordgame'} target={'_blank'}>Source code</a>
         <span className={styles.separator}>//</span>

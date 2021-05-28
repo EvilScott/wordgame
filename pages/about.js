@@ -16,7 +16,7 @@ export default function About() {
           deserunt mollit anim id est laborum.
         </p>
         <p>
-          <Link href={'/'} shallow={true}><a>Back to game</a></Link>
+          <Link href={'/'}><a>Back to game</a></Link>
         </p>
     </Layout>
   );
