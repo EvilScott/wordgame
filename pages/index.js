@@ -15,8 +15,9 @@ export default function Home({ keyLetter, letters }) {
         <h1 className={styles.title}>WordGame</h1>
 
         <p className={styles.description}>
-          Spell as many words as you can with the following letters, but
-          every word <i>must</i> use the blue letter.
+          Spell as many words as you can with the following letters,<br />
+          but every word <i>must</i> use the <span className={'blue'}>blue</span> letter{' '}
+          and be at least 4 letters long.
         </p>
 
         <Game keyLetter={keyLetter} letters={letters} />
