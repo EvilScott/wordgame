@@ -1,4 +1,17 @@
-div.message {
+@keyframes messageFade {
+    0% { top: -0.75rem; opacity: 0; }
+    30% { top: 0; opacity: 100%; }
+    90% { top: 0; opacity: 100%; }
+    100% { top: 0.75rem; opacity: 0; }
+}
+
+div.messageContainer {
     font-size: 1.5rem;
     margin-top: 0.5rem;
+}
+
+div.messageContainer span.message {
+    position: relative;
+    opacity: 0;
+    animation: messageFade 1.5s;
 }

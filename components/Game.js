@@ -14,6 +14,7 @@ export default function Game({ keyLetter, letters }) {
       e.target.value = '';
       const { score, message } = await scoreGuess(keyLetter, letters, guess);
       setScore(totalScore + score);
+      setMessage('');
       setMessage(message);
     }
   };
