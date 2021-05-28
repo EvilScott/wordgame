@@ -6,8 +6,15 @@
 }
 
 div.messageContainer {
+    height: 1rem;
     font-size: 1.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+div.messageContainer span.message {
+    position: relative;
+    opacity: 0;
+    animation: messageFade 1.5s;
 }
 
 div.messageContainer span.message {
