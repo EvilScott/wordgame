@@ -2,6 +2,7 @@ div.answers  {
     font-size: 1.25rem;
     line-height: 2rem;
     min-height: 3rem;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
+    text-align: center;
     width: 30rem;
 }
