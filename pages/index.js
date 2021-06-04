@@ -6,7 +6,7 @@ export default function Home({ keyLetter, letters, possibleScore }) {
   return (
     <Layout>
       <h1>WordGame</h1>
-      <p >
+      <p>
         Spell as many words as you can with the following letters,<br />
         but every word <i>must</i> use the <span className={'blue'}>blue</span> letter{' '}
         and be at least 4 letters long.
